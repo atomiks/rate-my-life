@@ -4,7 +4,7 @@ import ElasticScroll from './ElasticScroll'
 import Tippy from './Tippy'
 import { CSS_EASING, Button } from './Framework'
 import ThemeContext from '../contexts/ThemeContext'
-import { Link } from 'react-feather'
+import Link from 'react-feather/dist/icons/link'
 import THEMES from '../themes'
 
 const LinkWrapper = styled.div`

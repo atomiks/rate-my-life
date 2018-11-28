@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Transition } from 'react-spring'
-import copy from 'copy-to-clipboard'
 import Modal from './Modal'
 import RatingCircle from './RatingCircle'
 import ThemeContext from '../contexts/ThemeContext'

@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button, Center } from './Framework'
 import ThemeContext from '../contexts/ThemeContext'
-import { Moon } from 'react-feather'
+import Moon from 'react-feather/dist/icons/moon'
 import Tippy from './Tippy'
 import isProbablyDarkOutside from '../utils/isProbablyDarkOutside'
 
