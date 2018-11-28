@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/rate-my-life/precache-manifest.aef048d271090e86d9eda2d06e5ce360.js"
+  "/rate-my-life/precache-manifest.b281bbda50661093e64f9de0b618e035.js"
 );
 
 workbox.clientsClaim();
