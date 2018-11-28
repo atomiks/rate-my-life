@@ -5,7 +5,6 @@ import copy from 'copy-to-clipboard'
 import Modal from './Modal'
 import RatingCircle from './RatingCircle'
 import ThemeContext from '../contexts/ThemeContext'
-import { Center } from './Framework'
 import { getRatingColor } from '../utils/rating'
 import CATEGORIES from '../data/categories'
 import THEMES from '../themes'
@@ -51,13 +50,15 @@ function ResultsModal({
   categoryRatings,
   dispatch
 }) {
-  const [didCopy, setDidCopy] = useState(false)
   const [theme] = useContext(ThemeContext)
+  /*
+  const [didCopy, setDidCopy] = useState(false)
 
   function copyLink() {
     copy(link)
     setDidCopy(true)
   }
+  */
 
   return (
     <Transition
