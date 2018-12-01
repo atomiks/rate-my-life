@@ -60,8 +60,8 @@ function AgreementScale({
         </Title>
       )}
       <TippyDelayGroup
-        delay={userInput !== 'mouse' ? 0 : [1000, 150]}
-        duration={100}
+        delay={userInput !== 'mouse' ? 0 : [1000, 200]}
+        duration={0}
       >
         {props =>
           buttonSizes.map((size, index) => (

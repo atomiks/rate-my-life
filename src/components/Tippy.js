@@ -18,10 +18,24 @@ export function TippyDelayGroup({
   const userInput = useContext(UserInputContext)
   const [isAnyTippyOpen, setIsAnyTippyOpen] = useState(false)
   const onHideTimeout = useRef()
+  const instances = useRef([])
+
+  const onCreate = useCallback(instance => {
+    instance._originalDuration = instance.props.duration
+    instances.current.push(instance)
+  }, [])
 
   const onShow = useCallback(() => {
+    instances.current.forEach(i => {
+      i.set({ duration })
+      i.hide()
+    })
     clearTimeout(onHideTimeout.current)
     setIsAnyTippyOpen(true)
+  })
+
+  const onShown = useCallback(instance => {
+    instance.set({ duration: instance._originalDuration })
   })
 
   const onHide = useCallback(() => {
@@ -36,10 +50,14 @@ export function TippyDelayGroup({
   })
 
   return children({
+    onCreate,
     onShow,
+    onShown,
     onHide,
-    delay: isAnyTippyOpen ? 0 : delay,
-    duration: isAnyTippyOpen ? duration : [275, 250],
+    delay: isAnyTippyOpen
+      ? [0, Array.isArray(delay) ? delay[1] : delay]
+      : delay,
+    duration: isAnyTippyOpen ? duration : [],
     ...rest
   })
 }
