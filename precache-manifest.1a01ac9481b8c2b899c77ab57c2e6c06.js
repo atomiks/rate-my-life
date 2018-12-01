@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/rate-my-life/static/media/finance.1678a3ec.svg"
   },
   {
-    "revision": "adc73c849bd68c39eabc",
-    "url": "/rate-my-life/static/js/main.adc73c84.chunk.js"
+    "revision": "0a218dd61ef93a4eeeec",
+    "url": "/rate-my-life/static/js/main.0a218dd6.chunk.js"
   },
   {
     "revision": "2756db8a57ee70d560d1dad18690008b",
@@ -64,7 +64,7 @@ self.__precacheManifest = [
     "url": "/rate-my-life/static/css/1.029f2c55.chunk.css"
   },
   {
-    "revision": "54037030316028c64e8da697290721b1",
+    "revision": "d63ff547facbd973979f78063bd2f050",
     "url": "/rate-my-life/index.html"
   }
 ];
