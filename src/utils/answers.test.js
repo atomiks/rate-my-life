@@ -1,4 +1,4 @@
-import QUESTION_DATA from '../assets/questionData'
+import QUESTIONS from '../data/questions'
 import {
   isUnanswered,
   getUnanswered,
@@ -36,18 +36,18 @@ describe('getUnanswered', () => {
 
 describe('calculatePoints', () => {
   it('correctly sums the total points', () => {
-    const totalPoints = QUESTION_DATA.length
+    const totalPoints = QUESTIONS.length
     const answers = [...Array(totalPoints)]
     const maxPointsAnswers = answers.map((_, index) =>
-      QUESTION_DATA[index].isPositive ? 6 : 0
+      QUESTIONS[index].isPositive ? 6 : 0
     )
     const minPointsAnswers = answers.map((_, index) =>
-      QUESTION_DATA[index].isPositive ? 0 : 6
+      QUESTIONS[index].isPositive ? 0 : 6
     )
-    expect(calculatePoints(maxPointsAnswers, QUESTION_DATA, 6)).toBe(
+    expect(calculatePoints(maxPointsAnswers, QUESTIONS, 6)).toBe(
       totalPoints * 6
     )
-    expect(calculatePoints(minPointsAnswers, QUESTION_DATA, 6)).toBe(0)
+    expect(calculatePoints(minPointsAnswers, QUESTIONS, 6)).toBe(0)
   })
 })
 
@@ -96,10 +96,10 @@ describe('calculateProgress', () => {
 describe('getInitialAnswers', () => {
   it('returns the correct', () => {
     const json = '[null, 5, 2]'
-    expect(getInitialAnswers(null, QUESTION_DATA.length)).toEqual([
-      ...Array(QUESTION_DATA.length)
+    expect(getInitialAnswers(null, QUESTIONS.length)).toEqual([
+      ...Array(QUESTIONS.length)
     ])
-    expect(getInitialAnswers(JSON.parse(json), QUESTION_DATA.length)).toEqual([
+    expect(getInitialAnswers(JSON.parse(json), QUESTIONS.length)).toEqual([
       null,
       5,
       2
