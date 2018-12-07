@@ -2,7 +2,7 @@ import 'focus-visible'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/dist/themes/google.css'
 import 'tippy.js/dist/themes/translucent.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { GlobalStyle, TippyThemes } from './components/Framework'
 import Header from './components/Header'
 import Main from './components/Main'
@@ -21,12 +21,12 @@ function App() {
   const userInput = useUserInput()
 
   function toggleTheme() {
-    setTheme(theme => {
-      theme = theme === 'light' ? 'dark' : 'light'
-      localStorage.setItem('theme', theme)
-      return theme
-    })
+    setTheme(currentTheme => (currentTheme === 'light' ? 'dark' : 'light'))
   }
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  })
 
   return (
     <div>
