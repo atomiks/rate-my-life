@@ -68,6 +68,8 @@ const AgreementButtonStyled = styled.button`
   cursor: pointer;
   pointer-events: ${props => (props.disabled ? 'none' : undefined)};
   transform: scale(1);
+  user-select: none;
+  -webkit-touch-callout: none;
 
   ${MEDIA.xs} {
     width: ${props => xsSize(props.$size)}px;
@@ -158,6 +160,7 @@ function AgreementButton({
       isActive={isActive}
       aria-label={TITLES[index]}
       aria-selected={isActive}
+      onContextMenu={e => e.preventDefault()}
       {...rest}
     />
   )

@@ -42,6 +42,15 @@ const Title = styled.div`
   }
 `
 
+// NOTE: I noticed that the tooltips became buggy if the page was loaded then
+// switched to touch view in DevTools, but not if touch view was on during page
+// load. This is because Tippy's code sets a `supportsTouch` variable which is
+// simply `'ontouchstart' in window`, which is only `true` if the device is
+// touch-capable. This causes internal code within Tippy to fail (stops)
+// `touchHold` from working. Therefore, real users won't ever see buggy
+// tooltips, only if DevTools switches to touch mode after page load. Maybe
+// `supportsTouch` should not be considered for `touchHold` to prevent that?
+
 function AgreementScale({
   questionIndex,
   agreementIndex,
@@ -60,7 +69,7 @@ function AgreementScale({
         </Title>
       )}
       <TippyDelayGroup
-        delay={userInput !== 'mouse' ? 0 : [1000, 200]}
+        delay={userInput !== 'mouse' ? [300, 0] : [1000, 200]}
         duration={0}
       >
         {props =>
@@ -72,15 +81,8 @@ function AgreementScale({
               a11y={false}
               isEnabled={!isStatic}
               theme={theme === 'light' ? 'google' : 'translucent'}
+              touchHold={true}
               {...props}
-              onShow={tip => {
-                // iOS prevents the button being clicked because the tooltip
-                // shows up.
-                if (/iPhone|iPad|iPod/.test(navigator.platform)) {
-                  tip.reference.click()
-                }
-                props.onShow(tip)
-              }}
             >
               <AgreementButton
                 $size={size}
