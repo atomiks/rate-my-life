@@ -1,9 +1,9 @@
 {
-  "main.js": "/rate-my-life/static/js/main.0a218dd6.chunk.js",
-  "main.js.map": "/rate-my-life/static/js/main.0a218dd6.chunk.js.map",
-  "static/css/1.029f2c55.chunk.css": "/rate-my-life/static/css/1.029f2c55.chunk.css",
-  "static/js/1.1485e468.chunk.js": "/rate-my-life/static/js/1.1485e468.chunk.js",
-  "static/js/1.1485e468.chunk.js.map": "/rate-my-life/static/js/1.1485e468.chunk.js.map",
+  "main.js": "/rate-my-life/static/js/main.7847445a.chunk.js",
+  "main.js.map": "/rate-my-life/static/js/main.7847445a.chunk.js.map",
+  "static/css/1.ce4a3d52.chunk.css": "/rate-my-life/static/css/1.ce4a3d52.chunk.css",
+  "static/js/1.b5ffa368.chunk.js": "/rate-my-life/static/js/1.b5ffa368.chunk.js",
+  "static/js/1.b5ffa368.chunk.js.map": "/rate-my-life/static/js/1.b5ffa368.chunk.js.map",
   "runtime~main.js": "/rate-my-life/static/js/runtime~main.1a951d9b.js",
   "runtime~main.js.map": "/rate-my-life/static/js/runtime~main.1a951d9b.js.map",
   "static/media/logo-dark.svg": "/rate-my-life/static/media/logo-dark.2756db8a.svg",
@@ -18,8 +18,8 @@
   "static/media/health.svg": "/rate-my-life/static/media/health.ee786d76.svg",
   "static/media/logo-light.svg": "/rate-my-life/static/media/logo-light.4c86eacd.svg",
   "static/media/pop2.wav": "/rate-my-life/static/media/pop2.07474e14.wav",
-  "static/css/1.029f2c55.chunk.css.map": "/rate-my-life/static/css/1.029f2c55.chunk.css.map",
+  "static/css/1.ce4a3d52.chunk.css.map": "/rate-my-life/static/css/1.ce4a3d52.chunk.css.map",
   "index.html": "/rate-my-life/index.html",
-  "precache-manifest.1a01ac9481b8c2b899c77ab57c2e6c06.js": "/rate-my-life/precache-manifest.1a01ac9481b8c2b899c77ab57c2e6c06.js",
+  "precache-manifest.c0a3797a2d399133d70be297b4cb9bb2.js": "/rate-my-life/precache-manifest.c0a3797a2d399133d70be297b4cb9bb2.js",
   "service-worker.js": "/rate-my-life/service-worker.js"
 }
