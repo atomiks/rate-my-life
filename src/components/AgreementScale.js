@@ -76,7 +76,7 @@ function AgreementScale({
           buttonSizes.map((size, index) => (
             <Tippy
               key={index}
-              placement="bottom"
+              placement={userInput === 'touch' ? 'top' : 'bottom'}
               content={TITLES[index]}
               a11y={false}
               isEnabled={!isStatic}

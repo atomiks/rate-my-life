@@ -70,28 +70,28 @@ export const TippyThemes = createGlobalStyle`
 
   .tippy-tooltip.translucent-theme {
     font-weight: 600;
-    background-color: rgba(0, 8, 16, 0.4);
+    background-color:${THEMES.dark.backgroundDark};
     backdrop-filter: blur(10px);
 
     .tippy-backdrop {
-      background-color: rgba(0, 8, 16, 0.4);
+      background-color: ${THEMES.dark.backgroundDark};
     }
 
     .tippy-roundarrow {
-      fill: rgba(0, 8, 16, 0.4);
+      fill: ${THEMES.dark.backgroundDark};
     }
   }
   .tippy-popper[x-placement^='top'] .tippy-tooltip.translucent-theme .tippy-arrow {
-    border-top-color: rgba(0, 8, 16, 0.4);
+    border-top-color: ${THEMES.dark.backgroundDark};
   }
   .tippy-popper[x-placement^='bottom'] .tippy-tooltip.translucent-theme .tippy-arrow {
-    border-bottom-color: rgba(0, 8, 16, 0.4);
+    border-bottom-color: ${THEMES.dark.backgroundDark};
   }
   .tippy-popper[x-placement^='left'] .tippy-tooltip.translucent-theme .tippy-arrow {
-    border-left-color: rgba(0, 8, 16, 0.4);
+    border-left-color: ${THEMES.dark.backgroundDark};
   }
   .tippy-popper[x-placement^='right'] .tippy-tooltip.translucent-theme .tippy-arrow {
-    border-right-color: rgba(0, 8, 16, 0.4);
+    border-right-color: ${THEMES.dark.backgroundDark};
   }
 
   .tippy-tooltip.left-aligned-theme {
