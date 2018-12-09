@@ -1,10 +1,10 @@
 {
   "name": "rate-my-life",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "homepage": "https://atomiks.github.io/rate-my-life",
   "dependencies": {
-    "@tippy.js/react": "^1.1.0",
+    "@tippy.js/react": "^1.1.1",
     "copy-to-clipboard": "^3.0.8",
     "elastic-scroll-polyfill": "^2.0.0",
     "focus-trap": "^3.0.0",
