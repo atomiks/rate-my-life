@@ -1,9 +1,9 @@
 {
-  "main.js": "/rate-my-life/static/js/main.a1caccea.chunk.js",
-  "main.js.map": "/rate-my-life/static/js/main.a1caccea.chunk.js.map",
+  "main.js": "/rate-my-life/static/js/main.47d18fac.chunk.js",
+  "main.js.map": "/rate-my-life/static/js/main.47d18fac.chunk.js.map",
   "static/css/1.ce4a3d52.chunk.css": "/rate-my-life/static/css/1.ce4a3d52.chunk.css",
-  "static/js/1.b5ffa368.chunk.js": "/rate-my-life/static/js/1.b5ffa368.chunk.js",
-  "static/js/1.b5ffa368.chunk.js.map": "/rate-my-life/static/js/1.b5ffa368.chunk.js.map",
+  "static/js/1.06e2ae7d.chunk.js": "/rate-my-life/static/js/1.06e2ae7d.chunk.js",
+  "static/js/1.06e2ae7d.chunk.js.map": "/rate-my-life/static/js/1.06e2ae7d.chunk.js.map",
   "runtime~main.js": "/rate-my-life/static/js/runtime~main.1a951d9b.js",
   "runtime~main.js.map": "/rate-my-life/static/js/runtime~main.1a951d9b.js.map",
   "static/media/logo-dark.svg": "/rate-my-life/static/media/logo-dark.2756db8a.svg",
@@ -20,6 +20,6 @@
   "static/media/pop2.wav": "/rate-my-life/static/media/pop2.07474e14.wav",
   "static/css/1.ce4a3d52.chunk.css.map": "/rate-my-life/static/css/1.ce4a3d52.chunk.css.map",
   "index.html": "/rate-my-life/index.html",
-  "precache-manifest.d62c93eac95b4aec806ad93e840ace15.js": "/rate-my-life/precache-manifest.d62c93eac95b4aec806ad93e840ace15.js",
+  "precache-manifest.b48a4479090c8bfb0d816fea5e9e10ef.js": "/rate-my-life/precache-manifest.b48a4479090c8bfb0d816fea5e9e10ef.js",
   "service-worker.js": "/rate-my-life/service-worker.js"
 }
