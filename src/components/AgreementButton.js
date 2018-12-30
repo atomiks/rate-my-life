@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import { transparentize } from 'polished'
 import { MEDIA, CSS_EASING } from './Framework'
-import ThemeContext from '../contexts/ThemeContext'
 import { Howl } from 'howler'
 import pop1 from '../assets/pop1.wav'
 import pop2 from '../assets/pop2.wav'
@@ -24,7 +23,7 @@ export const COLORS = [
   '#828fa5',
   '#88dbb3',
   '#5bd69a',
-  '#00d1b4'
+  '#00d1b4',
 ]
 
 export const TITLES = [
@@ -34,7 +33,7 @@ export const TITLES = [
   'Neutral',
   'Slightly agree',
   'Agree',
-  'Strongly agree'
+  'Strongly agree',
 ]
 
 const feedbackAnimation = keyframes`
@@ -136,8 +135,6 @@ function AgreementButton({
   isActive,
   ...rest
 }) {
-  const [theme] = useContext(ThemeContext)
-
   function onClick() {
     if (!isActive) {
       popSounds[index].play()
@@ -147,15 +144,14 @@ function AgreementButton({
       type: 'ON_ANSWERED',
       payload: {
         questionIndex,
-        agreementIndex: index
-      }
+        agreementIndex: index,
+      },
     })
   }
 
   return (
     <AgreementButtonStyled
       index={index}
-      theme={theme}
       onClick={onClick}
       isActive={isActive}
       aria-label={TITLES[index]}

@@ -8,13 +8,13 @@ export const MEDIA = {
   sm: '@media (min-width: 576px)',
   md: '@media (min-width: 768px)',
   lg: '@media (min-width: 992px)',
-  xl: '@media (min-width: 1200px)'
+  xl: '@media (min-width: 1200px)',
 }
 
 export const CSS_EASING = {
   spring: 'cubic-bezier(0.53, 2.5, 0.36, 0.85)',
   easeOutQuart: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
-  easeOutQuint: 'cubic-bezier(0.23, 1, 0.32, 1)'
+  easeOutQuint: 'cubic-bezier(0.23, 1, 0.32, 1)',
 }
 
 const hover = keyframes`
@@ -38,8 +38,8 @@ export const TippyThemes = createGlobalStyle`
   }
 
   .tippy-tooltip.blue-theme {
-    background-color: ${props => THEMES.light.blue};
-    box-shadow: 0 15px 30px -2px ${props => THEMES[props.theme].shadowColor};
+    background-color: ${THEMES.light.blue};
+    box-shadow: 0 15px 30px -2px ${props => props.theme.shadowColor};
     font-size: 13px;
     font-weight: 600;
     padding: 3px 6px 4px;
@@ -124,8 +124,8 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: ${props => THEMES[props.theme].globalBackground};
-    color: ${props => THEMES[props.theme].globalColor};
+    background: ${props => props.theme.globalBackground};
+    color: ${props => props.theme.globalColor};
     line-height: 1.6;
     font-size: 17px;
     transition-property: background, color;
@@ -171,7 +171,7 @@ export const Container = styled.div`
   }
 `
 Container.defaultProps = {
-  mobilePadding: 5
+  mobilePadding: 5,
 }
 
 export const Row = styled(({ children, spacing, ...rest }) => (
@@ -183,13 +183,13 @@ export const Row = styled(({ children, spacing, ...rest }) => (
   margin: 0 -${props => props.spacing}px;
 `
 Row.defaultProps = {
-  spacing: 15
+  spacing: 15,
 }
 
 export const Col = styled(
   ({ children, base, xs, sm, md, lg, xl, spacing, ...rest }) => (
     <div {...rest}>{children}</div>
-  )
+  ),
 )`
   flex: 1;
   padding: 0 ${props => props.spacing}px;
@@ -197,7 +197,8 @@ export const Col = styled(
     props.base &&
     css`
       flex-basis: ${props => (100 * props.base) / 12}%;
-    `} ${props =>
+    `}
+  ${props =>
     ['xs', 'sm', 'md', 'lg', 'xl']
       .filter(size => props[size])
       .map(
@@ -205,20 +206,20 @@ export const Col = styled(
           ${MEDIA[size]} {
             flex-basis: ${props => (100 * props[size]) / 12}%;
           }
-        `
+        `,
       )};
 `
 Col.defaultProps = {
-  spacing: 15
+  spacing: 15,
 }
 
 const ButtonStyled = styled.button`
-  background: ${props => THEMES[props.theme].background};
+  background: ${props => props.theme.background};
   background-clip: ${props =>
-    props.theme === 'light' ? 'padding-box' : undefined};
+    props.theme.$type === 'light' ? 'padding-box' : undefined};
   display: inline-block;
   padding: ${props => (props.size === 'large' ? '12px 20px' : '8px 14px')};
-  color: ${props => THEMES[props.theme].blue};
+  color: ${props => props.theme.blue};
   text-decoration: none;
   border-radius: 4px;
   font-weight: 600;
@@ -227,20 +228,20 @@ const ButtonStyled = styled.button`
     transform 0.5s ${CSS_EASING.spring};
   background-size: 101% 100%;
   font-size: ${props => (props.size === 'large' ? '18px' : '15px')};
-  border: 1px solid ${props => THEMES[props.theme].borderColor};
+  border: 1px solid ${props => props.theme.borderColor};
   cursor: pointer;
   transform: scale(1.0001);
   user-select: none;
 
   &:hover {
     filter: brightness(1.2);
-    box-shadow: 0 12px 40px -8px ${props => THEMES[props.theme].shadowColor};
+    box-shadow: 0 12px 40px -8px ${props => props.theme.shadowColor};
     border-color: transparent;
   }
 
   &:active {
     filter: none;
-    box-shadow: 0 4px 20px -4px ${props => THEMES[props.theme].shadowColor};
+    box-shadow: 0 4px 20px -4px ${props => props.theme.shadowColor};
     transform: scale(0.98);
   }
 
@@ -261,5 +262,5 @@ export function Button({ children, ...rest }) {
   )
 }
 Button.defaultProps = {
-  type: 'primary'
+  type: 'primary',
 }

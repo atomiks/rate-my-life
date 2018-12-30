@@ -1,16 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react'
-import styled from 'styled-components'
+import React, { useState, useEffect } from 'react'
+import styled, { withTheme } from 'styled-components'
 import Circle from 'react-circle'
-import THEMES from '../themes'
-import ThemeContext from '../contexts/ThemeContext'
 
 const RatingCircleWrapper = styled.div`
   max-width: 150px;
   margin: 0 auto;
 `
 
-function RatingCircle({ rating, size, color, children }) {
-  const [theme] = useContext(ThemeContext)
+function RatingCircle({ rating, size, color, children, theme }) {
   const [progress, setProgress] = useState(0)
 
   // We want to transition from `0` to the actual rating on mount.
@@ -24,7 +21,7 @@ function RatingCircle({ rating, size, color, children }) {
         })
       })
     },
-    [rating]
+    [rating],
   )
 
   return (
@@ -37,14 +34,14 @@ function RatingCircle({ rating, size, color, children }) {
         progress={progress}
         animationDuration="3.5s"
         lineWidth={10}
-        bgColor={THEMES[theme].backgroundDark}
+        bgColor={theme.backgroundDark}
         progressColor={color}
         textColor={color}
         roundedStroke={true}
         showPercentageSymbol={false}
         textStyle={{
           fontSize: '100px',
-          transform: 'translateY(10px)'
+          transform: 'translateY(10px)',
         }}
       />
       {children}
@@ -52,4 +49,4 @@ function RatingCircle({ rating, size, color, children }) {
   )
 }
 
-export default RatingCircle
+export default withTheme(RatingCircle)

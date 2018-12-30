@@ -1,15 +1,13 @@
-import React, { useContext, useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { MEDIA, Button } from './Framework'
-import ThemeContext from '../contexts/ThemeContext'
 import Tippy from './Tippy'
-import THEMES from '../themes'
 
 const UnansweredQuestionsAlertStyled = styled.div`
   position: relative;
   padding: 20px;
-  background: ${props => THEMES[props.theme].background};
-  border: 1px solid ${props => THEMES[props.theme].borderColor};
+  background: ${props => props.theme.background};
+  border: 1px solid ${props => props.theme.borderColor};
   border-radius: 4px;
   margin-top: 10px;
 
@@ -26,12 +24,12 @@ const UnansweredQuestionsAlertStyled = styled.div`
   }
 
   &::before {
-    border-bottom-color: ${props => THEMES[props.theme].borderColor};
+    border-bottom-color: ${props => props.theme.borderColor};
     top: -20px;
   }
 
   &::after {
-    border-bottom-color: ${props => THEMES[props.theme].background};
+    border-bottom-color: ${props => props.theme.background};
     top: -19px;
   }
 `
@@ -61,9 +59,8 @@ const Text = styled.div`
 function UnansweredQuestionsAlert({
   turnOnHighlight,
   questionsRemaining,
-  dispatch
+  dispatch,
 }) {
-  const [theme] = useContext(ThemeContext)
   const [isTooltipVisible, setIsTooltipVisible] = useState(true)
   const [trigger, setTrigger] = useState('manual')
   const isInitialTimeoutPending = useRef(false)
@@ -86,7 +83,7 @@ function UnansweredQuestionsAlert({
     'Questions highlighted! Scroll up to answer the ones you missed.'
 
   return (
-    <UnansweredQuestionsAlertStyled theme={theme}>
+    <UnansweredQuestionsAlertStyled>
       <Text>
         You still have <strong>{questionsRemaining}</strong> questions left
         unanswered. Would you like to:

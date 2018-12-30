@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useContext } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import styled from 'styled-components'
 import UnansweredQuestionsAlert from './UnansweredQuestionsAlert'
 import ProgressBar from './ProgressBar'
@@ -7,7 +7,6 @@ import ResultsModal from './ResultsModal'
 import SubmitButton from './SubmitButton'
 import { Container, Center } from './Framework'
 import answersReducer from '../reducers/answersReducer'
-import ThemeContext from '../contexts/ThemeContext'
 import QUESTIONS from '../data/questions'
 import { getRatingColor } from '../utils/rating'
 import {
@@ -16,7 +15,7 @@ import {
   calculatePoints,
   calculateRating,
   calculateProgress,
-  calculateCategoryRatings
+  calculateCategoryRatings,
 } from '../utils/answers'
 
 const MainStyled = styled.main`
@@ -28,7 +27,7 @@ const TOTAL_POINTS = 6 * QUESTIONS.length
 
 const initialAnswers = getInitialAnswers(
   JSON.parse(localStorage.getItem('answers')),
-  TOTAL_QUESTIONS
+  TOTAL_QUESTIONS,
 )
 
 function Main() {
@@ -40,9 +39,8 @@ function Main() {
     rating: 0,
     categoryRatings: [],
     link: '',
-    color: ''
+    color: '',
   })
-  const [theme] = useContext(ThemeContext)
   const questionsRemaining = getUnanswered(state.answers).length
   const progress = calculateProgress(questionsRemaining, TOTAL_QUESTIONS)
 
@@ -64,8 +62,8 @@ function Main() {
         rating,
         categoryRatings,
         link,
-        color
-      }
+        color,
+      },
     })
   }
 
@@ -90,11 +88,7 @@ function Main() {
               dispatch={dispatch}
             />
           )}
-          <SubmitButton
-            theme={theme}
-            disabled={questionsRemaining > 0}
-            onClick={onSubmit}
-          >
+          <SubmitButton disabled={questionsRemaining > 0} onClick={onSubmit}>
             Get Life Rating!
           </SubmitButton>
         </Center>

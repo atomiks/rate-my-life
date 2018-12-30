@@ -1,10 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button, Center } from './Framework'
-import ThemeContext from '../contexts/ThemeContext'
 import Moon from 'react-feather/dist/icons/moon'
 import Tippy from './Tippy'
 import isProbablyDarkOutside from '../utils/isProbablyDarkOutside'
+import ThemeContext from '../contexts/ThemeContext'
 
 const Toggler = styled(Button)`
   position: relative;
@@ -16,18 +16,18 @@ const MoonStyles = theme => ({
   height: '20px',
   verticalAlign: '-5px',
   marginRight: '5px',
-  fill: theme === 'dark' ? '#e9d579' : 'transparent',
-  stroke: theme === 'dark' ? '#e9d579' : 'currentColor',
+  fill: theme.$type === 'dark' ? '#e9d579' : 'transparent',
+  stroke: theme.$type === 'dark' ? '#e9d579' : 'currentColor',
   transitionProperty: 'fill, stroke',
-  transitionDuration: '0.2s'
+  transitionDuration: '0.2s',
 })
 
-function ThemeToggler({ onClick }) {
+function ThemeToggler() {
   const [theme, toggleTheme] = useContext(ThemeContext)
   const [isTooltipVisible, setIsTooltipVisible] = useState(
     isProbablyDarkOutside(new Date().getHours()) &&
       theme === 'dark' &&
-      !localStorage.getItem('themeTooltip')
+      !localStorage.getItem('themeTooltip'),
   )
 
   useEffect(() => {
@@ -60,9 +60,9 @@ function ThemeToggler({ onClick }) {
       distance={16}
       theme="blue hint"
     >
-      <Toggler onClick={toggleTheme} theme={theme}>
+      <Toggler onClick={toggleTheme}>
         <Moon style={MoonStyles(theme)} />
-        {theme === 'light' ? 'Enable' : 'Disable'} Dark Mode
+        {theme.$type === 'light' ? 'Enable' : 'Disable'} Dark Mode
       </Toggler>
     </Tippy>
   )

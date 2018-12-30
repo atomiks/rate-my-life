@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
-import styled from 'styled-components'
+import React from 'react'
+import styled, { withTheme } from 'styled-components'
 import { Transition } from 'react-spring'
 import Modal from './Modal'
 import RatingCircle from './RatingCircle'
-import ThemeContext from '../contexts/ThemeContext'
 import { getRatingColor } from '../utils/rating'
 import CATEGORIES from '../data/categories'
-import THEMES from '../themes'
 
 const Categories = styled.div`
   display: flex;
@@ -21,7 +19,7 @@ const Category = styled.div`
 `
 
 const Title = styled.h2`
-  color: ${props => THEMES[props.theme].globalColor};
+  color: ${props => props.theme.globalColor};
   margin-top: 0;
   text-align: center;
 `
@@ -38,27 +36,16 @@ const CategoryImage = styled.img`
   width: 32px;
   height: 32px;
   margin: 0 auto -15px;
-  vertical-align: middle;
 `
 
 function ResultsModal({
-  link,
   isVisible,
   rating,
   color,
   categoryRatings,
-  dispatch
+  dispatch,
+  theme,
 }) {
-  const [theme] = useContext(ThemeContext)
-  /*
-  const [didCopy, setDidCopy] = useState(false)
-
-  function copyLink() {
-    copy(link)
-    setDidCopy(true)
-  }
-  */
-
   return (
     <Transition
       native
@@ -69,7 +56,7 @@ function ResultsModal({
       config={{
         duration: isVisible ? undefined : 125,
         tension: 150,
-        friction: 10
+        friction: 10,
       }}
     >
       {item =>
@@ -80,7 +67,7 @@ function ResultsModal({
                 dispatch={dispatch}
                 animation={props}
               >
-                <Title theme={theme}>Your Life Rating</Title>
+                <Title>Your Life Rating</Title>
                 <RatingCircle rating={rating} size={150} color={color}>
                   <CategoryTitle>Overall</CategoryTitle>
                 </RatingCircle>
@@ -110,4 +97,4 @@ function ResultsModal({
   )
 }
 
-export default ResultsModal
+export default withTheme(ResultsModal)

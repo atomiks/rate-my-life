@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import ThemeContext from '../contexts/ThemeContext'
 import { CSS_EASING, Container } from './Framework'
 import ElasticScroll from './ElasticScroll'
 import X from 'react-feather/dist/icons/x'
 import focusTrap from 'focus-trap'
 import { animated } from 'react-spring'
-import THEMES from '../themes'
 
 const Background = styled.div`
   position: fixed;
@@ -26,9 +24,9 @@ const Background = styled.div`
 
 const ModalStyled = styled.div`
   position: relative;
-  background: ${props => THEMES[props.theme].modalBackground};
-  color: ${props => THEMES[props.theme].fadedColor};
-  box-shadow: 0 16px 32px -4px ${props => THEMES[props.theme].shadowColor};
+  background: ${props => props.theme.modalBackground};
+  color: ${props => props.theme.fadedColor};
+  box-shadow: 0 16px 32px -4px ${props => props.theme.shadowColor};
   padding: 25px 0;
   border-radius: 10px;
   width: 1000px;
@@ -60,7 +58,7 @@ const XWrapper = styled.button`
   }
 
   svg {
-    stroke: ${props => THEMES[props.theme].color};
+    stroke: ${props => props.theme.color};
     width: 36px;
     height: 36px;
   }
@@ -69,7 +67,6 @@ const XWrapper = styled.button`
 const AnimatedModal = animated(ModalStyled)
 
 function Modal({ isVisible, children, animation, dispatch }) {
-  const [theme] = useContext(ThemeContext)
   const background = useRef()
   const focusTrapInstance = useRef()
 
@@ -90,7 +87,7 @@ function Modal({ isVisible, children, animation, dispatch }) {
         focusTrapInstance.current.deactivate()
       }
     },
-    [isVisible]
+    [isVisible],
   )
 
   function onTransitionEnd() {
@@ -118,12 +115,11 @@ function Modal({ isVisible, children, animation, dispatch }) {
         <Container mobilePadding={2}>
           <AnimatedModal
             isVisible={isVisible}
-            theme={theme}
             onTransitionEnd={onTransitionEnd}
             data-modal
             style={animation}
           >
-            <XWrapper theme={theme} onClick={onClose}>
+            <XWrapper onClick={onClose}>
               <X />
             </XWrapper>
             <Container>{children}</Container>

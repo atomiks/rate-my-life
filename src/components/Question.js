@@ -1,20 +1,16 @@
-import React, { memo, useContext } from 'react'
+import React, { memo } from 'react'
 import styled from 'styled-components'
 import AgreementScale from './AgreementScale'
 import { MEDIA } from './Framework'
-import ThemeContext from '../contexts/ThemeContext'
-import THEMES from '../themes'
 
 const QuestionStyled = styled.div`
   position: relative;
   padding: 20px 15px;
   border: 1px solid
     ${props =>
-      props.isHighlighted
-        ? THEMES[props.theme].red
-        : THEMES[props.theme].borderColor};
+      props.isHighlighted ? props.theme.red : props.theme.borderColor};
   border-radius: 4px;
-  background-color: ${props => THEMES[props.theme].background};
+  background-color: ${props => props.theme.background};
   transition-property: background, border;
 
   &:last-child {
@@ -55,11 +51,8 @@ const Title = styled.h2`
 `
 
 function Question({ index, agreementIndex, title, isHighlighted, dispatch }) {
-  const [theme] = useContext(ThemeContext)
-
   return (
     <QuestionStyled
-      theme={theme}
       isHighlighted={isHighlighted}
       aria-label={isHighlighted ? 'Unanswered' : undefined}
     >

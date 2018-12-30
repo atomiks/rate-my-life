@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 import { MEDIA, Container } from './Framework'
 import AgreementScale from './AgreementScale'
 import Categories from './Categories'
@@ -7,10 +7,8 @@ import ThemeToggler from './ThemeToggler'
 import Tippy from './Tippy'
 import logoLight from '../assets/logo-light.svg'
 import logoDark from '../assets/logo-dark.svg'
-import ThemeContext from '../contexts/ThemeContext'
 import UserInputContext from '../contexts/UserInputContext'
 import { version } from '../../package.json'
-import THEMES from '../themes'
 import QUESTIONS from '../data/questions'
 
 const HeaderStyled = styled.header`
@@ -40,7 +38,7 @@ const AgreementScaleWrapper = styled.div`
 
 const Version = styled.a`
   text-align: center;
-  color: ${props => THEMES[props.theme].fadedColor};
+  color: ${props => props.theme.fadedColor};
   font-weight: bold;
   font-size: 14px;
   position: absolute;
@@ -85,16 +83,15 @@ const Logo = styled.img`
   left: 0;
   right: 0;
   user-select: none;
+  display: ${props => (props.isVisible ? 'block' : 'none')};
 `
 
 const Tip = styled.p`
   font-size: 14px;
 `
 
-export default function Header() {
-  const [theme] = useContext(ThemeContext)
+function Header({ theme }) {
   const userInput = useContext(UserInputContext)
-
   const tip = userInput === 'touch' ? 'press and hold' : 'hover over'
 
   return (
@@ -104,9 +101,9 @@ export default function Header() {
           animateFill={false}
           content="Contribute on GitHub"
           arrow={true}
-          theme={theme === 'light' ? 'google' : 'translucent'}
+          theme={theme.tippy}
         >
-          <Version href="https://github.com/atomiks/rate-my-life" theme={theme}>
+          <Version href="https://github.com/atomiks/rate-my-life">
             v{version}
           </Version>
         </Tippy>
@@ -119,13 +116,13 @@ export default function Header() {
             src={logoLight}
             alt="Rate My Life"
             draggable="false"
-            style={{ display: theme === 'light' ? 'block' : 'none' }}
+            isVisible={theme.$type === 'light'}
           />
           <Logo
             src={logoDark}
             alt="Rate My Life"
             draggable="false"
-            style={{ display: theme === 'dark' ? 'block' : 'none' }}
+            isVisible={theme.$type === 'dark'}
           />
         </LogoWrapper>
         <Description>
@@ -174,3 +171,5 @@ export default function Header() {
     </HeaderStyled>
   )
 }
+
+export default withTheme(Header)

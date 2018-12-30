@@ -14,7 +14,7 @@ const SubmitButton = styled.button`
   opacity: ${props => (props.disabled ? 0.6 : 1)};
   margin-bottom: 25px;
   margin-top: 25px;
-  color: ${props => (props.theme === 'dark' ? '#5f95ff' : '#4a7eff')};
+  color: ${props => (props.theme.$type === 'dark' ? '#5f95ff' : '#4a7eff')};
   user-select: none;
 
   &:hover {

@@ -1,9 +1,8 @@
 import React, { memo, useContext } from 'react'
-import styled from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 import AgreementButton, { COLORS, TITLES } from './AgreementButton'
 import { MEDIA } from './Framework'
 import Tippy, { TippyDelayGroup } from './Tippy'
-import ThemeContext from '../contexts/ThemeContext'
 import UserInputContext from '../contexts/UserInputContext'
 
 // The buttons go from large (strongly disagree) to small (neutral) then large
@@ -56,9 +55,9 @@ function AgreementScale({
   agreementIndex,
   isStatic,
   displayTitles,
-  dispatch
+  dispatch,
+  theme,
 }) {
-  const [theme] = useContext(ThemeContext)
   const userInput = useContext(UserInputContext)
 
   return (
@@ -80,7 +79,7 @@ function AgreementScale({
               content={TITLES[index]}
               a11y={false}
               isEnabled={!isStatic}
-              theme={theme === 'light' ? 'google' : 'translucent'}
+              theme={theme.tippy}
               touchHold={true}
               {...props}
             >
@@ -106,7 +105,7 @@ function AgreementScale({
 }
 
 AgreementScale.defaultProps = {
-  displayTitles: false
+  displayTitles: false,
 }
 
-export default memo(AgreementScale)
+export default memo(withTheme(AgreementScale))
