@@ -108,6 +108,16 @@ export const TippyThemes = createGlobalStyle`
       transform: scale(1.5);
     }
   }
+
+  .tippy-tooltip.agreement-button-theme {
+    font-size: 12px;
+    padding: 4px 8px;
+    font-weight: 500;
+
+    .tippy-backdrop {
+      background: #191d2e;
+    }
+  }
 `
 
 export const GlobalStyle = createGlobalStyle`

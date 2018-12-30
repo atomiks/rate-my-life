@@ -79,8 +79,8 @@ function AgreementScale({
               content={TITLES[index]}
               a11y={false}
               isEnabled={!isStatic}
-              theme={theme.tippy}
               touchHold={true}
+              theme="agreement-button"
               {...props}
             >
               <AgreementButton

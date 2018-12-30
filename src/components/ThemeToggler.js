@@ -26,7 +26,7 @@ function ThemeToggler() {
   const [theme, toggleTheme] = useContext(ThemeContext)
   const [isTooltipVisible, setIsTooltipVisible] = useState(
     isProbablyDarkOutside(new Date().getHours()) &&
-      theme === 'dark' &&
+      theme.$type === 'dark' &&
       !localStorage.getItem('themeTooltip'),
   )
 
