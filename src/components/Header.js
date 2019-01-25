@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled, { withTheme } from 'styled-components'
 import { MEDIA, Container } from './Framework'
 import AgreementScale from './AgreementScale'
@@ -7,7 +7,6 @@ import ThemeToggler from './ThemeToggler'
 import Tippy from './Tippy'
 import logoLight from '../assets/logo-light.svg'
 import logoDark from '../assets/logo-dark.svg'
-import UserInputContext from '../contexts/UserInputContext'
 import { version } from '../../package.json'
 import QUESTIONS from '../data/questions'
 
@@ -86,14 +85,7 @@ const Logo = styled.img`
   display: ${props => (props.isVisible ? 'block' : 'none')};
 `
 
-const Tip = styled.p`
-  font-size: 14px;
-`
-
 function Header({ theme }) {
-  const userInput = useContext(UserInputContext)
-  const tip = userInput === 'touch' ? 'press and hold' : 'hover over'
-
   return (
     <HeaderStyled>
       <Container>
@@ -162,10 +154,6 @@ function Header({ theme }) {
             For each question, press the circle which best represents your
             answer. Good luck!
           </p>
-          <Tip>
-            <strong>Tip</strong>: {tip} a circle{' '}
-            {userInput === 'mouse' && 'for 1 second'} for more information.
-          </Tip>
         </Description>
       </Container>
     </HeaderStyled>

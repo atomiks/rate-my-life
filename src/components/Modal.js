@@ -119,7 +119,7 @@ function Modal({ isVisible, children, animation, dispatch }) {
             data-modal
             style={animation}
           >
-            <XWrapper onClick={onClose}>
+            <XWrapper onClick={onClose} aria-label="Close">
               <X />
             </XWrapper>
             <Container>{children}</Container>

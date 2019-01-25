@@ -7,7 +7,7 @@ import UserInputContext from '../contexts/UserInputContext'
 
 // The buttons go from large (strongly disagree) to small (neutral) then large
 // again (strongly agree) -- Size in pixels.
-const BUTTON_SIZES = [60, 50, 44, 38]
+const BUTTON_SIZES = [50, 44, 38, 32]
 const buttonSizes = BUTTON_SIZES.concat(BUTTON_SIZES.slice(0, 3).reverse())
 
 const stronglyDisagreeColor = COLORS[0]
@@ -30,14 +30,16 @@ const Title = styled.div`
   font-size: 14px;
   left: ${props => (props.$left ? 0 : undefined)};
   right: ${props => (props.$right ? 0 : undefined)};
-  top: -25px;
-  width: 60px;
-  text-align: right;
+  top: 50px;
+  width: ${props => (props.$left ? '20%' : '15%')};
+  text-align: ${props => (props.$left ? 'right' : 'left')};
   margin: 0 5px;
+  text-transform: uppercase;
 
-  ${MEDIA.sm} {
+  ${MEDIA.md} {
     position: static;
     text-align: left;
+    width: 75px;
   }
 `
 
@@ -56,19 +58,18 @@ function AgreementScale({
   isStatic,
   displayTitles,
   dispatch,
-  theme,
 }) {
   const userInput = useContext(UserInputContext)
 
   return (
     <AgreementScaleStyled>
-      {displayTitles && (
+      {
         <Title $color={stronglyDisagreeColor} $left>
           Disagree
         </Title>
-      )}
+      }
       <TippyDelayGroup
-        delay={userInput !== 'mouse' ? [300, 0] : [1000, 200]}
+        delay={userInput !== 'mouse' ? [300, 0] : [1000, 500]}
         duration={0}
       >
         {props =>
@@ -95,11 +96,11 @@ function AgreementScale({
           ))
         }
       </TippyDelayGroup>
-      {displayTitles && (
+      {
         <Title $color={stronglyAgreeColor} $right>
           Agree
         </Title>
-      )}
+      }
     </AgreementScaleStyled>
   )
 }

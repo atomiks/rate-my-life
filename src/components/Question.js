@@ -5,13 +5,13 @@ import { MEDIA } from './Framework'
 
 const QuestionStyled = styled.div`
   position: relative;
-  padding: 20px 15px;
+  padding: 25px 15px 45px;
   border: 1px solid
     ${props =>
       props.isHighlighted ? props.theme.red : props.theme.borderColor};
-  border-radius: 4px;
   background-color: ${props => props.theme.background};
   transition-property: background, border;
+  margin-bottom: -1px;
 
   &:last-child {
     margin-bottom: 15px;
@@ -33,8 +33,16 @@ const QuestionStyled = styled.div`
     font-weight: bold;
   }
 
-  &:not(:last-child) {
-    margin-bottom: 10px;
+  ${MEDIA.md} {
+    padding: 25px 15px;
+
+    &:first-child {
+      border-radius: 10px 10px 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 10px 10px;
+    }
   }
 `
 

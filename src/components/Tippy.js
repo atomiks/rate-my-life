@@ -5,7 +5,7 @@ import UserInputContext from '../contexts/UserInputContext'
 Tippy.defaultProps = {
   performance: true,
   theme: 'google',
-  livePlacement: false
+  livePlacement: false,
 }
 
 export function TippyDelayGroup({
@@ -58,13 +58,13 @@ export function TippyDelayGroup({
       ? [0, Array.isArray(delay) ? delay[1] : delay]
       : delay,
     duration: isAnyTippyOpen ? duration : [],
-    ...rest
+    ...rest,
   })
 }
 
 TippyDelayGroup.defaultProps = {
-  timeout: 400,
-  duration: 0
+  timeout: 300,
+  duration: 0,
 }
 
 export default Tippy

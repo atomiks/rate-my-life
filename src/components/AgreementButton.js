@@ -17,13 +17,13 @@ const highPop = new Howl({ src: pop1 })
 const popSounds = [lowPop, lowPop, lowPop, midPop, highPop, highPop, highPop]
 
 export const COLORS = [
-  '#ff4660',
-  '#f8448c',
-  '#f170a4',
+  '#f2246c',
+  '#e9557f',
+  '#ff7d8f',
   '#828fa5',
-  '#88dbb3',
-  '#5bd69a',
-  '#00d1b4',
+  '#85c89e',
+  '#6bbb94',
+  '#00b781',
 ]
 
 export const TITLES = [
@@ -57,7 +57,7 @@ const AgreementButtonStyled = styled.button`
   border-radius: 50%;
   width: ${props => baseSize(props.$size)}px;
   height: ${props => baseSize(props.$size)}px;
-  border: 3px solid ${props => COLORS[props.index]};
+  border: 4px solid ${props => COLORS[props.index]};
   margin: 0 4px;
   background: ${props =>
     props.isActive ? COLORS[props.index] : 'transparent'};
@@ -76,7 +76,7 @@ const AgreementButtonStyled = styled.button`
   }
 
   @media (min-width: 450px) {
-    margin: 0 6px;
+    margin: 0 8px;
     width: ${props => _450pxSize(props.$size)}px;
     height: ${props => _450pxSize(props.$size)}px;
   }
@@ -94,8 +94,8 @@ const AgreementButtonStyled = styled.button`
     height: ${props => baseSize(props.$size)}px;
     background: ${props => COLORS[props.index]};
     border-radius: 50%;
-    left: -3px;
-    top: -3px;
+    left: -4px;
+    top: -4px;
     z-index: -1;
     opacity: 0;
     pointer-events: none;
