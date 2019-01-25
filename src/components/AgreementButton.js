@@ -11,20 +11,11 @@ import pop3 from '../assets/pop3.wav'
 // 100-300ms after clicking, the sounds are distorted, and the TouchBar shows
 // a player. `Howl` uses the Web Audio API which suffers none of these problems.
 // Downside: it's 9 kB minzipped
-const lowPop = new Howl({ src: pop2 })
-const midPop = new Howl({ src: pop3 })
-const highPop = new Howl({ src: pop1 })
+const options = { volume: 0.4 }
+const lowPop = new Howl({ src: pop2, ...options })
+const midPop = new Howl({ src: pop3, ...options })
+const highPop = new Howl({ src: pop1, ...options })
 const popSounds = [lowPop, lowPop, lowPop, midPop, highPop, highPop, highPop]
-
-export const COLORS = [
-  '#f2246c',
-  '#e9557f',
-  '#ff7d8f',
-  '#828fa5',
-  '#85c89e',
-  '#6bbb94',
-  '#00b781',
-]
 
 export const TITLES = [
   'Strongly disagree',
@@ -57,10 +48,10 @@ const AgreementButtonStyled = styled.button`
   border-radius: 50%;
   width: ${props => baseSize(props.$size)}px;
   height: ${props => baseSize(props.$size)}px;
-  border: 4px solid ${props => COLORS[props.index]};
-  margin: 0 4px;
+  border: 4px solid ${props => props.theme.scale[props.index]};
+  margin: 0 2%;
   background: ${props =>
-    props.isActive ? COLORS[props.index] : 'transparent'};
+    props.isActive ? props.theme.scale[props.index] : 'transparent'};
   transition: background-color 0.3s, transform 0.5s ${CSS_EASING.spring};
   z-index: initial;
   outline: 0;
@@ -83,7 +74,7 @@ const AgreementButtonStyled = styled.button`
 
   &.focus-visible {
     box-shadow: ${props =>
-      `0 0 0 5px ${transparentize(0.5, COLORS[props.index])}`};
+      `0 0 0 5px ${transparentize(0.5, props.theme.scale[props.index])}`};
   }
 
   &::after {
@@ -92,7 +83,7 @@ const AgreementButtonStyled = styled.button`
     display: block;
     width: ${props => baseSize(props.$size)}px;
     height: ${props => baseSize(props.$size)}px;
-    background: ${props => COLORS[props.index]};
+    background: ${props => props.theme.scale[props.index]};
     border-radius: 50%;
     left: -4px;
     top: -4px;
@@ -117,7 +108,7 @@ const AgreementButtonStyled = styled.button`
   }
 
   &:hover {
-    background-color: ${props => COLORS[props.index]};
+    background-color: ${props => props.theme.scale[props.index]};
     transition: background-color 0.12s, transform 0.5s ${CSS_EASING.spring};
     transform: scale(1.06);
   }
@@ -156,7 +147,11 @@ function AgreementButton({
       isActive={isActive}
       aria-label={TITLES[index]}
       aria-selected={isActive}
-      onContextMenu={e => e.preventDefault()}
+      onContextMenu={e => {
+        if (window.innerWidth < 992) {
+          e.preventDefault()
+        }
+      }}
       {...rest}
     />
   )

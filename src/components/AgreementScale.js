@@ -1,6 +1,6 @@
 import React, { memo, useContext } from 'react'
 import styled, { withTheme } from 'styled-components'
-import AgreementButton, { COLORS, TITLES } from './AgreementButton'
+import AgreementButton, { TITLES } from './AgreementButton'
 import { MEDIA } from './Framework'
 import Tippy, { TippyDelayGroup } from './Tippy'
 import UserInputContext from '../contexts/UserInputContext'
@@ -9,9 +9,6 @@ import UserInputContext from '../contexts/UserInputContext'
 // again (strongly agree) -- Size in pixels.
 const BUTTON_SIZES = [50, 44, 38, 32]
 const buttonSizes = BUTTON_SIZES.concat(BUTTON_SIZES.slice(0, 3).reverse())
-
-const stronglyDisagreeColor = COLORS[0]
-const stronglyAgreeColor = COLORS[COLORS.length - 1]
 
 const AgreementScaleStyled = styled.div`
   position: relative;
@@ -25,7 +22,7 @@ const AgreementScaleStyled = styled.div`
 
 const Title = styled.div`
   position: absolute;
-  color: ${props => (props.theme.$type === 'dark' ? '#8b98cf' : props.$color)};
+  color: ${props => props.$color};
   font-weight: bold;
   font-size: 14px;
   left: ${props => (props.$left ? 0 : undefined)};
@@ -53,12 +50,18 @@ const Title = styled.div`
 // tooltips, only if DevTools switches to touch mode after page load. Maybe
 // `supportsTouch` should not be considered for `touchHold` to prevent that?
 
-function AgreementScale({ questionIndex, agreementIndex, isStatic, dispatch }) {
+function AgreementScale({
+  questionIndex,
+  agreementIndex,
+  isStatic,
+  dispatch,
+  theme,
+}) {
   const userInput = useContext(UserInputContext)
 
   return (
     <AgreementScaleStyled>
-      <Title $color={stronglyDisagreeColor} $left>
+      <Title $color={theme.scale[0]} $left>
         Disagree
       </Title>
       <TippyDelayGroup
@@ -89,7 +92,7 @@ function AgreementScale({ questionIndex, agreementIndex, isStatic, dispatch }) {
           ))
         }
       </TippyDelayGroup>
-      <Title $color={stronglyAgreeColor} $right>
+      <Title $color={theme.scale[theme.scale.length - 1]} $right>
         Agree
       </Title>
     </AgreementScaleStyled>
