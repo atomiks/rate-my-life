@@ -82,7 +82,12 @@ function ResultsModal({
                           src={CATEGORIES.find(cat => cat.name === name).image}
                           alt={name}
                         />
-                        <RatingCircle rating={rating} size={100} color={color}>
+                        <RatingCircle
+                          rating={rating}
+                          size={100}
+                          color={color}
+                          name={name}
+                        >
                           <CategoryTitle>{name}</CategoryTitle>
                         </RatingCircle>
                       </Category>

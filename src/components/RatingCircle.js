@@ -7,7 +7,7 @@ const RatingCircleWrapper = styled.div`
   margin: 0 auto;
 `
 
-function RatingCircle({ rating, size, color, children, theme }) {
+function RatingCircle({ rating, size, color, children, theme, name }) {
   const [progress, setProgress] = useState(0)
 
   // We want to transition from `0` to the actual rating on mount.
@@ -24,10 +24,14 @@ function RatingCircle({ rating, size, color, children, theme }) {
     [rating],
   )
 
+  const labelStart = name
+    ? `Your rating for ${name} is`
+    : `Your overall life rating is`
+
   return (
     <RatingCircleWrapper
       tabIndex="0"
-      aria-label={`Your overall life rating is ${rating} out of 100`}
+      aria-label={`${labelStart} ${rating} out of 100`}
     >
       <Circle
         size={size}

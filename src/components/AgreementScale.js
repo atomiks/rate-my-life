@@ -25,7 +25,7 @@ const AgreementScaleStyled = styled.div`
 
 const Title = styled.div`
   position: absolute;
-  color: ${props => props.$color};
+  color: ${props => (props.theme.$type === 'dark' ? '#8b98cf' : props.$color)};
   font-weight: bold;
   font-size: 14px;
   left: ${props => (props.$left ? 0 : undefined)};
@@ -35,6 +35,7 @@ const Title = styled.div`
   text-align: ${props => (props.$left ? 'right' : 'left')};
   margin: 0 5px;
   text-transform: uppercase;
+  opacity: ${props => props.theme.$type === 'dark' && 0.95};
 
   ${MEDIA.md} {
     position: static;
@@ -52,22 +53,14 @@ const Title = styled.div`
 // tooltips, only if DevTools switches to touch mode after page load. Maybe
 // `supportsTouch` should not be considered for `touchHold` to prevent that?
 
-function AgreementScale({
-  questionIndex,
-  agreementIndex,
-  isStatic,
-  displayTitles,
-  dispatch,
-}) {
+function AgreementScale({ questionIndex, agreementIndex, isStatic, dispatch }) {
   const userInput = useContext(UserInputContext)
 
   return (
     <AgreementScaleStyled>
-      {
-        <Title $color={stronglyDisagreeColor} $left>
-          Disagree
-        </Title>
-      }
+      <Title $color={stronglyDisagreeColor} $left>
+        Disagree
+      </Title>
       <TippyDelayGroup
         delay={userInput !== 'mouse' ? [300, 0] : [1000, 500]}
         duration={0}
@@ -96,11 +89,9 @@ function AgreementScale({
           ))
         }
       </TippyDelayGroup>
-      {
-        <Title $color={stronglyAgreeColor} $right>
-          Agree
-        </Title>
-      }
+      <Title $color={stronglyAgreeColor} $right>
+        Agree
+      </Title>
     </AgreementScaleStyled>
   )
 }
