@@ -13,7 +13,8 @@ const HeaderStyled = styled.header`
 `
 
 const Heading = styled.h2`
-  margin-bottom: 0;
+  margin-bottom: 15px;
+  text-align: center;
 `
 
 const Description = styled.div`

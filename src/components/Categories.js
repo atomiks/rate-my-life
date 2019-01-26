@@ -1,33 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
+import { transparentize } from 'polished'
 import { MEDIA, CSS_EASING } from './Framework'
 import CATEGORIES from '../data/categories'
 
 const CategoriesStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background: ${props => props.theme.background};
   border-radius: 10px;
-  transition: background 0.2s;
+  transition: background 0.2s, border-color 0.2s;
   margin-top: 10px;
+  margin-bottom: 20px;
+  background: ${props => transparentize(0.6, props.theme.background)};
+  border: 1px solid ${props => props.theme.borderColor};
 
   ${MEDIA.lg} {
     justify-content: center;
-    background: none;
   }
 `
 
 const Category = styled.div`
   font-weight: 700;
-  text-align: center;
   padding: 15px;
   width: 50%;
-  border-radius: 8px;
   transition: box-shadow 0.2s, background 0.2s,
     transform 0.5s ${CSS_EASING.spring};
   transform: scale(1.001); /* Prevents a 1px jitter on Chrome. */
+  text-align: center;
 
-  ${MEDIA.sm} {
+  @media (min-width: 420px) {
     width: 33.33333333%;
   }
 
@@ -42,15 +43,20 @@ const Category = styled.div`
 `
 
 const CategoryImage = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   user-select: none;
+
+  ${MEDIA.lg} {
+    width: 70px;
+    height: 70px;
+  }
 `
 
 const CategoryName = styled.div`
-  font-size: 15px;
+  font-size: 18px;
 
-  ${MEDIA.sm} {
+  ${MEDIA.lg} {
     font-size: 16px;
   }
 `
