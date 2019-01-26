@@ -6,11 +6,10 @@ import { MEDIA } from './Framework'
 const QuestionStyled = styled.div`
   position: relative;
   padding: 25px 15px 45px;
-  border: 1px solid
-    ${props =>
-      props.isHighlighted ? props.theme.red : props.theme.borderColor};
+  border: 1px solid ${props => props.theme.borderColor};
   background-color: ${props => props.theme.background};
-  transition-property: background, border;
+  transition-property: background-color, border;
+  transition-duration: 0.2s;
   margin-bottom: -1px;
 
   &:last-child {
@@ -34,7 +33,7 @@ const QuestionStyled = styled.div`
   }
 
   ${MEDIA.md} {
-    padding: 25px 15px;
+    padding: 30px 15px;
 
     &:first-child {
       border-radius: 10px 10px 0 0;
@@ -54,7 +53,7 @@ const Title = styled.h2`
   font-weight: 500;
 
   ${MEDIA.md} {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
 `
 

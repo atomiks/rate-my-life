@@ -47,11 +47,10 @@ const AgreementButtonStyled = styled.button`
   padding: 0;
   border-radius: 50%;
   width: ${props => baseSize(props.$size)}px;
+  background: transparent;
   height: ${props => baseSize(props.$size)}px;
   border: 4px solid ${props => props.theme.scale[props.index]};
   margin: 0 2%;
-  background: ${props =>
-    props.isActive ? props.theme.scale[props.index] : 'transparent'};
   transition: background-color 0.3s, transform 0.5s ${CSS_EASING.spring};
   z-index: initial;
   outline: 0;
@@ -108,14 +107,19 @@ const AgreementButtonStyled = styled.button`
   }
 
   &:hover {
-    background-color: ${props => props.theme.scale[props.index]};
+    background-color: ${props =>
+      transparentize(0.8, props.theme.scale[props.index])};
     transition: background-color 0.12s, transform 0.5s ${CSS_EASING.spring};
-    transform: scale(1.06);
+    transform: scale(1.02);
   }
 
   &:active {
-    transform: scale(0.94);
+    transform: scale(0.9);
     transition: background-color 0.3s transform 0.5s ${CSS_EASING.spring};
+  }
+
+  &[aria-selected='true'] {
+    background: ${props => props.theme.scale[props.index]};
   }
 `
 
@@ -145,7 +149,6 @@ function AgreementButton({
       index={index}
       onClick={onClick}
       isActive={isActive}
-      aria-label={TITLES[index]}
       aria-selected={isActive}
       onContextMenu={e => {
         if (window.innerWidth < 992) {
